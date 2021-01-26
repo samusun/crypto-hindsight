@@ -1,0 +1,1 @@
+Webbapplikationen ska nyttja ett Web App Manifest, som ska vara genererad via Vue CLI:s PWA-plugin – webbapplikationen ska, via detta manifest, ha ett eget appnamn, en egen temafärg, och egna ikoner

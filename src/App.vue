@@ -1,12 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+      <BootHead/>    
     <router-view/>
   </div>
 </template>
+
+
+<script>
+import BootHead from './components/BootHead.vue'
+
+export default {
+  name: 'App',
+  components: {
+    BootHead
+  }
+}
+
+</script>
+
 
 <style>
 #app {

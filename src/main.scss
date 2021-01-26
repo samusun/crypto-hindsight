@@ -1,0 +1,28 @@
+$primary:#e0e530;
+$secondary: #e0e530;
+$third: #b61a28;
+$fourth: #73557b;
+$white: #fff;
+$gray: #9b9b9b;
+$darkGray: rgb(42, 42, 42);
+$border-radius: 40rem;
+$margin: 50rem;
+.home {
+    background-color: $fourth;
+    color: $secondary;
+}
+
+.top7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border: solid 2px $primary;
+    border-radius: 2%;
+    padding: 20px;
+    margin: 10px;
+    width: 30vw;
+    background-color: black;
+}
+
+@import '~bootstrap';
+@import '~bootstrap-vue';
