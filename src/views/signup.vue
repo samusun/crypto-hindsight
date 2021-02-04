@@ -1,42 +1,18 @@
 <template class="body" >
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <form class="box">
-                    <h1>Login</h1>
-                    <p class="text-muted"> Ange användarnamn och lösenord</p> <input placeholder="Användarnamn" v-model="this.input" type="text" name="användarnamn" > <input type="password" name="" placeholder="Lösenord"> <a class="forgot text-muted" @click="forgot" href="#">Forgot password?</a> <input @click="login" type="submit" name="" value="Login" href="#">
-                    <div class="col-md-12">
-                        <ul class="social-network social-circle">
-                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
-                        </ul>
-                    </div>
-                </form>
-            </div>
-        </div>
-</div>
-</div>
+<signupsite/>
 </template>
 
 <script>
+import signupsite from '@/components/signupSite.vue'
+
+
 export default {
-data(){
-    return{
-        input: null,
-        name: "Sign up"
-    }
-},
-    methods:{
-      forgot(){
-          alert("Vi har ingen databas, ange vad som helst bara")
-    },
-    login(){
-        alert("Du är nu nu inloggad")
-    }
-},
+  name: 'signUp',
+  components: {
+    signupsite,
+  }
 }
+
 </script>
 
 <style lang="scss" >

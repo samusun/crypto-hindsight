@@ -6,7 +6,6 @@ $white: #fff;
 $gray: #9b9b9b;
 $darkGray: rgb(42, 42, 42);
 $border-radius: 40rem;
-$margin: 50rem;
 .home {
     background-color: $fourth;
     color: $secondary;
@@ -20,8 +19,21 @@ $margin: 50rem;
     border-radius: 2%;
     padding: 20px;
     margin: 10px;
-    width: 30vw;
     background-color: black;
+}
+
+#online {
+    color: rgb(147, 255, 147);
+}
+
+#offline {
+    color: rgb(255, 87, 87);
+}
+
+.top7li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 @import '~bootstrap';

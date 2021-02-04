@@ -46,6 +46,7 @@
           id="input-4"
           v-model="date"
           type="date"
+          :min="min"
           required
         ></b-form-input>
       </b-form-group>
@@ -56,8 +57,10 @@
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
     </div>
-    <b-card class="result" header="Resultat">
-      <pre class="m-1">{{result}}</pre>
+    <b-card v-if="this.priceThen" class="result" header="Resultat">
+        <p> Resultatet är enastående </p>
+       <b-button variant="success" @click="calc">Beräkna</b-button>
+       <b-card-text>{{result}}</b-card-text>
     </b-card>
   </div>
 </template>
@@ -90,6 +93,8 @@ watch: {
         missedGainz: null,
         result: null,
         allData: null,
+        change: 1,
+        min: "2013-02-03"
       }
     },
     computed: {
@@ -98,38 +103,40 @@ watch: {
         },
     },
     methods: {
+        calc(){
+               this.change = (this.priceNow/this.priceThen)
+               console.log(this.change +  " this change")
+               this.missedGainz = (this.summa*this.change)
+               this.finalresult = Math.round(this.missedGainz) + this.valuta1
+
+               this.result = "Hade du köpt "+this.valuta2+ " " + this.date + " för "+this.summa+" "+this.valuta1+ " hade det varit värt "+this.finalresult+" idag "
+        },
 
       onSubmit(event) {
         event.preventDefault()
+            this.$store.commit('increment')
+            console.log("Antal sökningar: "+ this.$store.state.antalSök)
             this.today = this.today.getFullYear()+'-'+(this.today.getMonth()+1)+'-'+this.today.getDate()
             this.today = this.today.split('-').reverse().join('-');
 
 
 
-        fetch('https://api.coingecko.com/api/v3/coins/'+this.valuta2+'/history?date='+this.fixDate)
+         fetch('https://api.coingecko.com/api/v3/coins/'+this.valuta2+'/history?date='+this.fixDate)
              .then((response) => response.json())
              .then((result) => {
 
-               this.priceThen = result.market_data.current_price.sek
+               this.priceThen = Math.round(result.market_data.current_price.sek)
                console.log(result)
-               console.log("Då kostade en Bitcoin " +this.priceThen)
+                return console.log("Då kostade en Bitcoin " +this.priceThen)
                })
 
-               fetch('https://api.coingecko.com/api/v3/coins/'+this.valuta2+'/history?date='+this.today)
+           fetch('https://api.coingecko.com/api/v3/coins/'+this.valuta2+'/history?date='+this.today)
              .then((response) => response.json())
              .then((result) => {
-               this.priceNow = result.market_data.current_price.sek
+               this.priceNow = Math.round(result.market_data.current_price.sek)
                console.log(result)
-               console.log("Nu kostar en bitcoin" + this.priceNow)
-
-
-                this.change = (this.priceNow/this.priceThen)
-               console.log(this.change +  " this change")
-               this.missedGainz = (this.summa*this.change)
-
-               this.result = "Hade du köpt "+this.valuta2+ " " + this.date + " för "+this.summa+" "+this.valuta1+ " hade det varit värt "+this.missedGainz + this.valuta1+" idag"
-               })
-               
+                return console.log("Nu kostar en bitcoin" + this.priceNow)
+               })             
                
       },
 
@@ -137,8 +144,11 @@ watch: {
         event.preventDefault()
         // Reset our form values
         this.summa = null,
+        this.priceThen = null,
         this.valuta1 = "",
         this.valuta2 = "",
+        this.result = "",
+        this.today = new Date(),
         // Trick to reset/clear native browser form validation state
         this.show = false
         this.$nextTick(() => {
@@ -158,6 +168,10 @@ $third: #b61a28;
 $fourth: #73557b;
 $white: #fff;
 $gray: #9b9b9b;
+
+.b-button {
+    color: rgb(255, 87, 87)
+}
 
 .result {
     background-color: $fourth;

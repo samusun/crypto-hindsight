@@ -1,1 +1,6 @@
-Webbapplikationen ska nyttja ett Web App Manifest, som ska vara genererad via Vue CLI:s PWA-plugin – webbapplikationen ska, via detta manifest, ha ett eget appnamn, en egen temafärg, och egna ikoner
+Webbapplikationen ska nyttja ett Web App Manifest, som ska vara genererad via Vue CLI:s PWA-plugin – webbapplikationen ska, via detta manifest, ha ett eget appnamn, en egen temafärg, och egna ikoner.
+
+Varför blir det infintiy sek?
+Om ena talet är större än andra 500/400 så blir det ok, men om det är 500/400 blir det infintiy.
+
+Verkar inte funka på min tele när jag är offline

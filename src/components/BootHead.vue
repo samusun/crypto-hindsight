@@ -15,29 +15,38 @@
       </b-navbar-nav>
 
 
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown right>
-          <template #button-content>
-            <em>User</em> 
-          </template>
-          <b-dropdown-item href="/signup">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-        </b-nav-item-dropdown>
-      </b-navbar-nav>
+
     </b-collapse>
+    <p v-if="$store.state.registered">{{$store.state.username}}  </p>
+    <p id="online" v-if="userOnline" > Online </p>
+<p id="offline" v-else > Offline </p>
   </b-navbar>
 </div>
 </template>
 
 <script>
 
-
 export default {
-    computed: {
+    created(){
+        if (navigator.onLine){
+            this.userOnline = true
+            addEventListener('offline', () => {
+  this.userOnline = false
+})
 
+addEventListener('online', () => {
+  this.userOnline = true
+})
+        }
+},
+    data(){
+        return{
+    userOnline: false
+        }
     },
   name: 'BootHead',
 }
+
 
 // Här vill jag importera användarnamnet från store.
 </script>
