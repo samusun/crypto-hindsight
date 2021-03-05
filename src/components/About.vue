@@ -1,19 +1,15 @@
-
-
 <template>
-<div>
-<h1>{{user}}</h1>
-<p>  </p>
-</div>
+  <div>
+    <h1>{{ user }}</h1>
+    <p></p>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-      user: String
+    user: String,
   },
-  name: 'about',
-}
-
+  name: "about",
+};
 </script>
-

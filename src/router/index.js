@@ -9,25 +9,26 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(VueRouter);
 
-const routes = [{
-        path: "/",
-        name: "Home",
-        component: Home,
-    },
-    {
-        path: "/about/:user?",
-        name: "About",
-        component: About,
-    },
-    {
-        path: "/signup",
-        name: "Signup",
-        component: Signup,
-    },
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/about/:user?",
+    name: "About",
+    component: About,
+  },
+  {
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
+  },
 ];
 
 const router = new VueRouter({
-    routes,
+  routes,
 });
 
 export default router;
